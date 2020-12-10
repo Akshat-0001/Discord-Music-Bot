@@ -5,10 +5,10 @@ const fs = require('fs');
 
 module.exports = {
   info: {
-    name: "afk",
-    description: "24/7",
-    usage: "[afk]",
-    aliases: [""],
+    name: "24/7",
+    description: "use 24x7",
+    usage: "[]",
+    aliases: ["24/7"],
   },
 
   run: async function (client, message, args) {
@@ -21,8 +21,9 @@ module.exports = {
             serverQueue.afk = !serverQueue.afk;
              message.channel.send({
                 embed: {
-                    color: "GREEN",
-                    description: `💤  **|**  AFK is **\`${serverQueue.afk === true ? "enabled" : "disabled"}\`**`
+                    color: "RANDOM",
+                    thumbnail: "https://66.media.tumblr.com/66f920fdd54c519f98af3a8a24fd14a7/tumblr_prfcqeDLEY1t73js3_540.gif",
+                    description: `💤  **|**  24/7 mode is **\`${serverQueue.afk === true ? "enabled" : "disabled"}\`**`
                 }
             });
             return  fs.writeFile("./afk.json", JSON.stringify(afk), (err) => {

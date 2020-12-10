@@ -75,7 +75,7 @@ module.exports = {
       let thing = new MessageEmbed()
       .setAuthor("Song has been added to queue", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
       .setThumbnail(song.img)
-      .setColor("YELLOW")
+      .setColor("RANDOM")
       .addField("Name", song.title, true)
       .addField("Duration", song.duration, true)
       .addField("Requested by", song.req.tag, true)
@@ -104,25 +104,26 @@ module.exports = {
     var online = afk[message.guild.id]
     if (!song){
       if (!online.afk) {
-        sendError("Leaving the voice channel because I think there are no songs in the queue. If you like the bot stay 24/7 in voice channel run `!afk`\n\nThank you for using my code! [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot)", message.channel)
+        sendError("Leaving the voice channel because I think there are no songs in the queue. If you like the bot stay 24/7 in voice channel run `;24/7`\n\nThank you for using my code! [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot)", message.channel)
         message.guild.me.voice.channel.leave();//If you want your bot stay in vc 24/7 remove this line :D
         message.client.queue.delete(message.guild.id);
       }
             return message.client.queue.delete(message.guild.id);
 }
-  let stream = null;  
+ let stream = null; 
     if (song.url.includes("youtube.com")) {
+      
       stream = await ytdl(song.url);
-      stream.on('error', err => {
+stream.on('error', function(er)  {
+      if (er) {
         if (queue) {
         queue.songs.shift();
         play(queue.songs[0]);
-      }
-      
-  	 sendError(`An unexpected error has occurred.\nPossible type \`${err}\``, message.channel)
-     return;
-});
-    }
+  	  return sendError(`An unexpected error has occurred.\nPossible type \`${er}\``, message.channel)
+          }
+        }
+    });
+}
     queue.connection.on("disconnect", () => message.client.queue.delete(message.guild.id));
 
       const dispatcher = queue.connection
@@ -139,7 +140,7 @@ module.exports = {
       let thing = new MessageEmbed()
       .setAuthor("Started Playing Music!", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
       .setThumbnail(song.img)
-      .setColor("BLUE")
+      .setColor("RANDOM")
       .addField("Name", song.title, true)
       .addField("Duration", song.duration, true)
       .addField("Requested by", song.req.tag, true)

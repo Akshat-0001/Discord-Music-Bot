@@ -5,7 +5,7 @@ const {
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
 const ytdlDiscord = require("ytdl-core-discord");
-const youtube = require("youtube-sr");
+var ytpl = require('ytpl');
 const sendError = require("../util/error")
 const fs = require('fs');
 
@@ -29,9 +29,9 @@ module.exports = {
 		if (!searchString||!url) return sendError(`Usage: ${message.client.config.prefix}playlist <YouTube Playlist URL | Playlist Name>`, message.channel);
 		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
 			try {
-				const playlist = await youtube.getPlaylist(url);
-				if (playlist === null) return sendError("Playlist not found", message.channel)
-				const videos = await playlist.videos;
+				const playlist = await ytpl(url.split("list=")[1]);
+				if (!playlist) return sendError("Playlist not found", message.channel)
+				const videos = await playlist.items;
 				for (const video of videos) {
 					// eslint-disable-line no-await-in-loop
 					await handleVideo(video, message, channel, true); // eslint-disable-line no-await-in-loop
@@ -39,7 +39,7 @@ module.exports = {
 				return message.channel.send({
 					embed: {
 						color: "GREEN",
-						description: `✅  **|**  Playlist: **\`${playlist.title}\`** has been added to the queue`
+						description: `✅  **|**  Playlist: **\`${videos[0].title}\`** has been added to the queue`
 					}
 				})
 			} catch (error) {
@@ -51,22 +51,21 @@ module.exports = {
 				var searched = await yts.search(searchString)
 
 				if (searched.playlists.length === 0) return sendError("Looks like i was unable to find the playlist on YouTube", message.channel)
-				var songInfo = searched.playlists[0]
-				let listurl = songInfo.url;
-				const playlist = await youtube.getPlaylist(listurl);
-				const videos = await playlist.videos;
+				var songInfo = searched.playlists[0];
+				let listurl = songInfo.listId;
+				const playlist = await ytpl(listurl)
+				const videos = await playlist.items;
 				for (const video of videos) {
 					// eslint-disable-line no-await-in-loop
 					await handleVideo(video, message, channel, true); // eslint-disable-line no-await-in-loop
 				}
 				let thing = new MessageEmbed()
 					.setAuthor("Playlist has been added to queue", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
-					.setThumbnail(playlist.thumbnail.url)
-					.setColor("GREEN")
-					.setDescription(`✅  **|**  Playlist: **\`${playlist.title}\`** has been added to the queue`)
+					.setThumbnail(songInfo.thumbnail)
+					.setColor("RANDOM")
+					.setDescription(`✅  **|**  Playlist: **\`${songInfo.title}\`** has been added \`${songInfo.videoCount}\` video to the queue`)
 				return message.channel.send(thing)
 			} catch (error) {
-				console.error(error);
 				return sendError("An unexpected error has occurred",message.channel).catch(console.error);
 			}
 		}
@@ -76,11 +75,11 @@ module.exports = {
 			const song = {
 				id: video.id,
 				title: Util.escapeMarkdown(video.title),
-				views: String(video.views).padStart(10, ' '),
-				ago: video.ago ? video.ago : "Playlist",
-				duration: video.durationFormatted,
+				views: video.views ? video.views : "-",
+				ago: video.ago ? video.ago : "-",
+                                duration: video.duration,
 				url: `https://www.youtube.com/watch?v=${video.id}`,
-				img: video.thumbnail.url,
+				img: video.thumbnail,
 				req: message.author
 			};
 			if (!serverQueue) {
@@ -112,7 +111,7 @@ module.exports = {
 				let thing = new MessageEmbed()
 					.setAuthor("Song has been added to queue", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
 					.setThumbnail(song.img)
-					.setColor("YELLOW")
+					.setColor("RANDOM")
 					.addField("Name", song.title, true)
 					.addField("Duration", song.duration, true)
 					.addField("Requested by", song.req.tag, true)
@@ -137,22 +136,25 @@ async	function play(guild, song) {
       }
             return message.client.queue.delete(message.guild.id);
 }
-let stream = null;  
+ let stream = null; 
     if (song.url.includes("youtube.com")) {
+      
       stream = await ytdl(song.url);
-      stream.on('error', err => {
+stream.on('error', function(er)  {
+      if (er) {
         if (serverQueue) {
         serverQueue.songs.shift();
-        play(serverQueue.songs[0]);
-      }
-      
-  	 sendError(`An unexpected error has occurred.\nPossible type \`${err}\``, message.channel)
-     return;
-});
-    }
+        play(guild, serverQueue.songs[0]);
+  	  return sendError(`An unexpected error has occurred.\nPossible type \`${er}\``, message.channel)
+
+         }
+       }
+     });
+}
+ 
       serverQueue.connection.on("disconnect", () => message.client.queue.delete(message.guild.id));
 			const dispatcher = serverQueue.connection
-         .play(ytdl(song.url, {quality: 'highestaudio', highWaterMark: 1 << 25 ,type: "opus"}))
+         .play(ytdl(song.url,{quality: 'highestaudio', highWaterMark: 1 << 25 ,type: "opus"}))
         .on("finish", () => {
             const shiffed = serverQueue.songs.shift();
             if (serverQueue.loop === true) {
@@ -165,7 +167,7 @@ let stream = null;
 let thing = new MessageEmbed()
 				.setAuthor("Started Playing Music!", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
 				.setThumbnail(song.img)
-				.setColor("BLUE")
+				.setColor("RANDOM")
 				.addField("Name", song.title, true)
 				.addField("Duration", song.duration, true)
 				.addField("Requested by", song.req.tag, true)

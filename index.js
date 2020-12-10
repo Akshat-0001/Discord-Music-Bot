@@ -1,6 +1,7 @@
 require("dotenv").config();//Loading .env
 const fs = require("fs");
 const { Collection, Client } = require("discord.js");
+const fetch = require('node-fetch');
 
 const client = new Client();//Making a discord bot client
 client.commands = new Collection();//Making client.commands as a Discord.js Collection
@@ -34,7 +35,7 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 setInterval(async () => {
-  await fetch('https://69-musician.glitch.me').then(console.log('Pinged!'))
+  await fetch('https://mocha-music-pro.glitch.me').then(console.log('Pinged!'))
 }, 240000)
 
 //Logging in to discord
