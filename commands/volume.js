@@ -22,7 +22,9 @@ module.exports = {
     let xd = new MessageEmbed()
     .setDescription(`I set the volume to: **${args[0]/1}/100**`)
     .setAuthor("Server Volume Manager", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
-    .setColor("BLUE")
+    .setColor("RANDOM")
+    .setThumbnail("https://66.media.tumblr.com/5c712c9fc3f17b1735a36b8ec65996ba/tumblr_pnm6xffHNP1t73js3_540.gif")
+    .setFooter("Did Anyone Asked You to change the volume ??? xD")
     return message.channel.send(xd);
   },
 };

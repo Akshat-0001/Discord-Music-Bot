@@ -13,56 +13,123 @@ module.exports = {
 
         //Sort your commands into categories, and make seperate embeds for each category
 
-        const moderation = new Discord.MessageEmbed()
+        const music = new Discord.MessageEmbed()
         .setTitle('Help Command Panel')
         .setTimestamp()
+        .setColor("RANDOM")
+        .setThumbnail("https://66.media.tumblr.com/66f920fdd54c519f98af3a8a24fd14a7/tumblr_prfcqeDLEY1t73js3_540.gif")
         .addField("Music Commands", [
-            `**❯  ;play <YouTube_URL> | <song_name> :** To play songs :D`,
-            `**❯  ;nowplaying :** To show the music which is currently playing in this server`,
+            `**❯  ;play :** To play songs :D`,
+          
+            `**❯  ;nowplaying :** Current playing music`,
+          
+            `**❯  ;search :** To search songs :D`,
+          
             `**❯  ;queue :** To show the server music queue`,
-            `**❯  ;playlist <YouTube Playlist URL | <song_name> :** To play songs from playlist :D`,
-            `**❯  ;pause :** To pause the current music in the server`,
+          
+            `**❯  ;playlist :** To play songs from playlist :D`,
+          
+            `**❯  ;pause :** To pause the current music`,
+          
             `**❯  ;resume :** To resume the paused music`,
-            `**❯  ;stop :** To stop the music and clearing the queue`,
-            `**❯  ;skipto <number>:** Skip to the selected queue number`,
+          
+            `**❯  ;stop :** Stops the music and clear the queue`,
+          
+            `**❯  ;skipto :** Skip to the selected song no.`,
+          
             `**❯  ;skip :** To skip the current playing music`,
-            `**❯  ;remove <number> :** Remove song from the queue`,
+          
+            `**❯  ;remove :** Remove song from the queue`,
+          
             `**❯  ;loop :** Toggle music loop`,
+          
             `**❯  ;shuffle :** Shuffles the server queue`,
-            `**❯  ;volume :** Toggle music loop`,
+          
             `**❯  ;volume :** To change the server song queue volume`,
-            `**❯  ;lyrics :** Get lyrics for the currently playing song`,
-            `**❯  ;afk :** To enable 24x7 mode of the bot`
+          
+            `**❯  ;lyrics :** Get lyrics for the current song`,
+          
+            `**❯  ;24/7 :** To enable 24x7 mode of the bot`
         
     ])
 
         const fun = new Discord.MessageEmbed()
         .setTitle('Help Command Panel')
         .setTimestamp()
+        .setColor("RANDOM")
+        .setThumbnail("https://66.media.tumblr.com/66f920fdd54c519f98af3a8a24fd14a7/tumblr_prfcqeDLEY1t73js3_540.gif")
+        .setFooter(`Made with LovE Akshat | Pucha Kisi Ne ?`)
         .addField("Fun", [
             `**❯  ;meme :** Generates a random meme`,
-            `**❯  ;ascii <text> :** Converts text into ascii`
+          
+            `**❯  ;say :** Make the bot say anything !`,
+          
+            `**❯  ;poll :** Toggle a Poll !`,
+          
+            `**❯  ;roast :** Roast a user !`,
+          
+            `**❯  ;bang :** Bang a user xD !`,
+          
+            `**❯  ;8ball :** Ask me a question!!`
         
     ])
+        
+        const images = new Discord.MessageEmbed()
+        .setTitle('Help Command Panel')
+        .setTimestamp()
+        .setColor("RANDOM")
+        .setThumbnail("https://66.media.tumblr.com/66f920fdd54c519f98af3a8a24fd14a7/tumblr_prfcqeDLEY1t73js3_540.gif")
+        .setFooter(`Made with LovE Akshat | Pucha Kisi Ne ?`)
+        .addField("Images", [
+            `**❯  ;tweet :** Sends A Tweet`,
+            `**❯  ;slap :** Slaps the mentioned user xD !`,
+            `**❯  ;pat :** Pats the mentioned user !!`,
+            `**❯  ;feed :** Feeds the mentioned user! lol` 
+        
+    ])
+        
+        const motivation = new Discord.MessageEmbed()
+        .setTitle('Help Command Panel')
+        .setTimestamp()
+        .setColor("RANDOM")
+        .setThumbnail("https://66.media.tumblr.com/66f920fdd54c519f98af3a8a24fd14a7/tumblr_prfcqeDLEY1t73js3_540.gif")
+        .setFooter(`Made with LovE Akshat | Pucha Kisi Ne ?`)
+        .addField("Motivation", [
+            `**❯  ;advice :** Generates a random good advice`,
+          
+            `**❯  ;motivation :** Quotes to motivate yourself !`
+          ])
+        
         const utility = new Discord.MessageEmbed()
         .setTitle('Help Command Panel')
         .setTimestamp()
-        .addField("Fun", [
+        .setColor("RANDOM")
+        .setThumbnail("https://66.media.tumblr.com/66f920fdd54c519f98af3a8a24fd14a7/tumblr_prfcqeDLEY1t73js3_540.gif")
+        .addField("General", [
             `**❯  ;info :** All about Mocha Music`,
-            `**❯  ;invite :** To add/invite the bot to your server`,
+          
+            `**❯  ;invite :** To invite the bot to your server`,
+          
             `**❯  ;status :** Current Status of the Bot`,
-            `**❯  ;ping :** Get the bot\'s API ping`,
-            `**❯  ;afk :** To enable/disable 24x7`
+          
+            `**❯  ;ping :** Get the bot's ping`,
+          
+            `**❯  ;afk :** To enable/disable 24x7`,
+          
+            `**❯  ;botinfo :** Bot Stats`
         
-    ])
-
+        ])
+       
         const pages = [
-                moderation,
+                music,
                 fun,
-                utility
+                images,
+                motivation,
+                utility,
+              
         ]
 
-      const emojiList = ["⏪", "⏩"];
+      const emojiList = ["⬅️", "➡️"];
 
         const timeout = '120000';
 

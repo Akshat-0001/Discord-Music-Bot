@@ -31,7 +31,7 @@ module.exports = {
           if (searched[0] == undefined)return sendError("Looks like i was unable to find the song on YouTube", message.channel);
                     let index = 0;
                     let embedPlay = new MessageEmbed()
-                        .setColor("BLUE")
+                        .setColor("RANDOM")
                         .setAuthor(`Results for \"${args.join(" ")}\"`, message.author.displayAvatarURL())
                         .setDescription(`${searched.map(video2 => `**\`${++index}\`  |** [\`${video2.title}\`](${video2.url}) - \`${video2.durationFormatted}\``).join("\n")}`)
                         .setFooter("Type the number of the song to add it to the playlist");
@@ -61,7 +61,7 @@ module.exports = {
                     console.error(err);
                     return message.channel.send({
                         embed: {
-                            color: "RED",
+                            color: "RANDOM",
                             description: "🆘  **|**  I could not obtain any search results"
                         }
                     });
@@ -86,7 +86,7 @@ module.exports = {
       let thing = new MessageEmbed()
       .setAuthor("Song has been added to queue", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
       .setThumbnail(song.img)
-      .setColor("YELLOW")
+      .setColor("RANDOM")
       .addField("Name", song.title, true)
       .addField("Duration", song.duration, true)
       .addField("Requested by", song.req.tag, true)
@@ -121,19 +121,22 @@ module.exports = {
       }
             return message.client.queue.delete(message.guild.id);
 }
-let stream = null;  
+let stream = null; 
     if (song.url.includes("youtube.com")) {
+      
       stream = await ytdl(song.url);
-      stream.on('error', err => {
+stream.on('error', function(er)  {
+      if (er) {
         if (queue) {
         queue.songs.shift();
         play(queue.songs[0]);
+  	  return sendError(`An unexpected error has occurred.\nPossible type \`${er}\``, message.channel)
+
+       }
       }
-      
-  	 sendError(`An unexpected error has occurred.\nPossible type \`${err}\``, message.channel)
-     return;
-});
-    }
+    });  
+}
+ 
     queue.connection.on("disconnect", () => message.client.queue.delete(message.guild.id));
       const dispatcher = queue.connection
          .play(ytdl(song.url, {quality: 'highestaudio', highWaterMark: 1 << 25 ,type: "opus"}))
@@ -149,7 +152,7 @@ let stream = null;
       let thing = new MessageEmbed()
       .setAuthor("Started Playing Music!", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
       .setThumbnail(song.img)
-      .setColor("BLUE")
+      .setColor("RANDOM")
       .addField("Name", song.title, true)
       .addField("Duration", song.duration, true)
       .addField("Requested by", song.req.tag, true)

@@ -66,12 +66,12 @@ module.exports = {
 
 function generateQueueEmbed(message, queue) {
   let embeds = [];
-  let k = 10;
+  let k = 5;
 
-  for (let i = 0; i < queue.length; i += 10) {
+  for (let i = 0; i < queue.length; i += 5) {
     const current = queue.slice(i, k);
     let j = i;
-    k += 10;
+    k += 5;
 
     const info = current.map((track) => `**\`${++j}\`** | [\`${track.title}\`](${track.url})`).join("\n");
   
@@ -79,7 +79,7 @@ function generateQueueEmbed(message, queue) {
     const embed = new MessageEmbed()
      .setAuthor("Server Songs Queue", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
     .setThumbnail(message.guild.iconURL())
-    .setColor("BLUE")
+    .setColor("RANDOM")
     .setDescription(`${info}`)
     .addField("Now Playing", `[${queue[0].title}](${queue[0].url})`, true)
     .addField("Text Channel", serverQueue.textChannel, true)

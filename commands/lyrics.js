@@ -26,8 +26,9 @@ module.exports = {
     let lyricsEmbed = new MessageEmbed()
       .setAuthor(`${queue.songs[0].title} — Lyrics`, "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
       .setThumbnail(queue.songs[0].img)
-      .setColor("YELLOW")
+      .setColor("RANDOM")
       .setDescription(lyrics)
+      .setFooter("Songs ke lyrics tak nhi yaad !! Mujhse mehnat karwate ho ??? xD")
       .setTimestamp();
 
     if (lyricsEmbed.description.length >= 2048)

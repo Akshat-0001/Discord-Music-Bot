@@ -21,8 +21,10 @@ module.exports = {
       }	    
       let xd = new MessageEmbed()
       .setDescription("⏸ Paused the music for you!")
-      .setColor("YELLOW")
+      .setThumbnail("https://66.media.tumblr.com/5c712c9fc3f17b1735a36b8ec65996ba/tumblr_pnm6xffHNP1t73js3_540.gif")
+      .setColor("RANDOM")
       .setTitle("Music has been paused!")
+      .setFooter("Tumse pause karne ke liye pucha kisi ne ? xD")
       return message.channel.send(xd);
     }
     return sendError("There is nothing playing in this server.", message.channel);

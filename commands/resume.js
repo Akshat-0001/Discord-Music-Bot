@@ -16,7 +16,9 @@ module.exports = {
       serverQueue.connection.dispatcher.resume();
       let xd = new MessageEmbed()
       .setDescription("▶ Resumed the music for you!")
-      .setColor("YELLOW")
+      .setThumbnail("https://i.pinimg.com/originals/fd/47/e5/fd47e55dfb49ae1d39675d6eff34a729.gif")
+      .setColor("RANDOM")
+      .setFooter("Tumse resume karne ke liye pucha kisi ne ? xD")
       .setAuthor("Music has been Resumed!", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
       return message.channel.send(xd);
     }
