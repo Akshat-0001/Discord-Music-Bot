@@ -5,9 +5,10 @@ module.exports = {
     name: "bang",
     description: "Bang A User !!",
     usage: "[]",
-    aliases: ["bang", "bam"],
+    aliases: ["bang", "bam"]
   },
 
-  run: async function (client, message, args) {
-     message.channel.send("✅ User has been bammed !");
-}}
+  run: async function(client, message, args) {
+    message.channel.send("✅ User has been bammed !");
+  }
+};
