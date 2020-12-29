@@ -2,10 +2,17 @@ require("dotenv").config(); //Loading .env
 const fs = require("fs");
 const { Collection, Client } = require("discord.js");
 const fetch = require("node-fetch");
+const DBL = require("dblapi.js");
+
+
 
 const client = new Client(); //Making a discord bot client
 client.commands = new Collection(); //Making client.commands as a Discord.js Collection
 client.queue = new Map();
+const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3Mzg3MTQ2OTkxMzU3MTM2MCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjA3NDQ1OTIwfQ.1toLADm2Fys3pc10mcGhpv8AL91nK8yAvhuo3l0aTB0', client);
+dbl.on('error', e => {
+ console.log(`Oops! ${e}`);
+})
 
 client.config = {
   prefix: process.env.PREFIX
@@ -33,10 +40,6 @@ fs.readdir("./commands/", (err, files) => {
     console.log("Loading Command: " + commandName);
   });
 });
-
-setInterval(async () => {
-  await fetch("https://mocha-music-pro.glitch.me").then(console.log("Pinged!"));
-}, 240000);
 
 //Logging in to discord
 client.login(process.env.TOKEN);
