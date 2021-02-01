@@ -9,6 +9,6 @@ module.exports = async (text, channel) => {
   let embed = new MessageEmbed()
     .setColor("RANDOM")
     .setDescription(text)
-    .setFooter("Oops something went wrong :(");
+    .setFooter("Kuch Toh Gadbad Hai Daya xD ");
   await channel.send(embed);
 };

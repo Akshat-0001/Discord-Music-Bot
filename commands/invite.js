@@ -14,11 +14,9 @@ module.exports = {
       .setThumbnail(
         "https://media1.tenor.com/images/6dd789b67e972e0c21b69e7aba8bd4eb/tenor.gif"
       )
-      .setFooter(
-        "Invite karo and maze loo | Made with love by Akshat | Pucha Kisi Ne ?"
-      )
+      .setFooter("Invite karo and maze loo | Made with love by Akshat")
       .setDescription(
-        `Want me in your server? Invite me today! \n\n [Invite Link](https://top.gg/bot/773871469913571360)`
+        `Invite me to have fun with me xD ! \n\n [Invite nhi kiya toh gay :)](https://top.gg/bot/773871469913571360)`
       )
       .setURL(`https://top.gg/bot/773871469913571360`)
       .setColor("RANDOM");

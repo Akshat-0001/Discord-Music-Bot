@@ -29,7 +29,7 @@ module.exports = {
     let lyricsEmbed = new MessageEmbed()
       .setAuthor(
         `${queue.songs[0].title} — Lyrics`,
-        "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif"
+        "https://cdn.discordapp.com/emojis/767294574212415518.gif"
       )
       .setThumbnail(queue.songs[0].img)
       .setColor("RANDOM")
