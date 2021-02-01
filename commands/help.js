@@ -16,6 +16,13 @@ module.exports = {
       .setTitle("Help Command Panel")
       .setTimestamp()
       .setColor("RANDOM")
+      .setImage(
+        "https://cdn.discordapp.com/attachments/796774782342660146/804032694509895710/standard_2.gif"
+      )
+      .setFooter(
+        "Made with love by akshat",
+        "https://cdn.discordapp.com/attachments/796774782342660146/804032694509895710/standard_2.gif"
+      )
       .setThumbnail(
         "https://66.media.tumblr.com/66f920fdd54c519f98af3a8a24fd14a7/tumblr_prfcqeDLEY1t73js3_540.gif"
       )
@@ -57,6 +64,9 @@ module.exports = {
       .setTitle("Help Command Panel")
       .setTimestamp()
       .setColor("RANDOM")
+      .setImage(
+        "https://cdn.discordapp.com/attachments/796774782342660146/804032694509895710/standard_2.gif"
+      )
       .setThumbnail(
         "https://66.media.tumblr.com/66f920fdd54c519f98af3a8a24fd14a7/tumblr_prfcqeDLEY1t73js3_540.gif"
       )
@@ -64,13 +74,9 @@ module.exports = {
       .addField("Fun", [
         `**❯  ;meme :** Generates a random meme`,
 
-        `**❯  ;say :** Make the bot say anything !`,
-
         `**❯  ;poll :** Toggle a Poll !`,
 
-        `**❯  ;roast :** Roast a user !`,
-
-        `**❯  ;bang :** Bang a user xD !`,
+        `**❯  ;bam :** Bam a user xD !`,
 
         `**❯  ;8ball :** Ask me a question!!`
       ]);
@@ -78,6 +84,9 @@ module.exports = {
     const motivation = new Discord.MessageEmbed()
       .setTitle("Help Command Panel")
       .setTimestamp()
+      .setImage(
+        "https://cdn.discordapp.com/attachments/796774782342660146/804032694509895710/standard_2.gif"
+      )
       .setColor("RANDOM")
       .setThumbnail(
         "https://66.media.tumblr.com/66f920fdd54c519f98af3a8a24fd14a7/tumblr_prfcqeDLEY1t73js3_540.gif"
@@ -92,6 +101,9 @@ module.exports = {
     const utility = new Discord.MessageEmbed()
       .setTitle("Help Command Panel")
       .setTimestamp()
+      .setImage(
+        "https://cdn.discordapp.com/attachments/796774782342660146/804032694509895710/standard_2.gif"
+      )
       .setColor("RANDOM")
       .setThumbnail(
         "https://66.media.tumblr.com/66f920fdd54c519f98af3a8a24fd14a7/tumblr_prfcqeDLEY1t73js3_540.gif"
@@ -101,11 +113,7 @@ module.exports = {
 
         `**❯  ;invite :** To invite the bot to your server`,
 
-        `**❯  ;status :** Current Status of the Bot`,
-
         `**❯  ;ping :** Get the bot's ping`,
-
-        `**❯  ;afk :** To enable/disable 24x7`,
 
         `**❯  ;botinfo :** Bot Stats`
       ]);

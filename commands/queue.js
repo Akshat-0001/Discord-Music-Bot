@@ -20,7 +20,7 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
     if (!queue)
       return sendError(
-        "There is nothing playing in this server.",
+        "There's nothing playing in this server. -_-",
         message.channel
       );
 
@@ -96,7 +96,7 @@ function generateQueueEmbed(message, queue) {
     const embed = new MessageEmbed()
       .setAuthor(
         "Server Songs Queue",
-        "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif"
+        "https://cdn.discordapp.com/emojis/767294574212415518.gif"
       )
       .setThumbnail(message.guild.iconURL())
       .setColor("RANDOM")

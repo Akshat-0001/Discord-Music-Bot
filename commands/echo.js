@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   info: {
-    name: "sayy",
+    name: "echo",
     description: "Types the text you wrote !",
     usage: "[]",
     aliases: [""]

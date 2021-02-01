@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   info: {
-    name: "status",
+    name: "server",
     description: "Shows the current bot servers and users.",
     usage: "[]",
     aliases: ["botstatus"]

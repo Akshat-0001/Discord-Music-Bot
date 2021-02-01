@@ -17,14 +17,14 @@ module.exports = {
     let channel = message.member.voice.channel;
     if (!channel)
       return sendError(
-        "I'm sorry but you need to be in a voice channel to play music!",
+        "Connect to a voice channel to play music!",
         message.channel
       );
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
       return sendError(
-        "I cannot connect to your voice channel, make sure I have the proper permissions!",
+        "I can't connect to your voice channel, make sure I have the proper permissions!",
         message.channel
       );
     if (!permissions.has("SPEAK"))
@@ -36,7 +36,7 @@ module.exports = {
     var searchString = args.join(" ");
     if (!searchString)
       return sendError(
-        "You didn't poivide want i want to play",
+        "You didn't provide anything for me to play -_-",
         message.channel
       );
     const url = args[0] ? args[0].replace(/<(.+)>/g, "$1") : "";
@@ -51,7 +51,7 @@ module.exports = {
         songInfo = await ytdl.getInfo(url);
         if (!songInfo)
           return sendError(
-            "Looks like i was unable to find the song on YouTube",
+            "I was unable to find the song on YouTube",
             message.channel
           );
         song = {
@@ -74,7 +74,7 @@ module.exports = {
         var searched = await yts.search(searchString);
         if (searched.videos.length === 0)
           return sendError(
-            "Looks like i was unable to find the song on YouTube",
+            "I was unable to find the song on YouTube",
             message.channel
           );
 
@@ -100,7 +100,7 @@ module.exports = {
       let thing = new MessageEmbed()
         .setAuthor(
           "Song has been added to queue",
-          "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif"
+          "https://cdn.discordapp.com/emojis/767294574212415518.gif"
         )
         .setThumbnail(song.img)
         .setColor("RANDOM")
@@ -134,7 +134,7 @@ module.exports = {
       if (!song) {
         if (!online.afk) {
           sendError(
-            "Leaving the voice channel because I think there are no songs in the queue. If you like the bot stay 24/7 in voice channel run `;24/7`\n\nThank you for using my code! [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot)",
+            "Enable 24/7 to make the bot stay in vc .If you like the bot stay 24/7 in voice channel run ;24/7",
             message.channel
           );
           message.guild.me.voice.channel.leave(); //If you want your bot stay in vc 24/7 remove this line :D
@@ -182,7 +182,7 @@ module.exports = {
       let thing = new MessageEmbed()
         .setAuthor(
           "Started Playing Music!",
-          "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif"
+          "https://cdn.discordapp.com/emojis/767294574212415518.gif"
         )
         .setThumbnail(song.img)
         .setColor("RANDOM")

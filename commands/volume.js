@@ -41,7 +41,7 @@ module.exports = {
       .setDescription(`I set the volume to: **${args[0] / 1}/100**`)
       .setAuthor(
         "Server Volume Manager",
-        "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif"
+        "https://cdn.discordapp.com/emojis/767294574212415518.gif"
       )
       .setColor("RANDOM")
       .setThumbnail(

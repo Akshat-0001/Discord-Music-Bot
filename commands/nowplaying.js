@@ -23,7 +23,7 @@ module.exports = {
         "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif"
       )
       .setThumbnail(song.img)
-      .setColor("RANDOM")
+      .setColor("BLUE")
       .addField("Name", song.title, true)
       .addField("Duration", song.duration, true)
       .addField("Requested by", song.req.tag, true)
