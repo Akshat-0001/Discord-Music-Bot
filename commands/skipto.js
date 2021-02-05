@@ -15,19 +15,19 @@ module.exports = {
         .send({
           embed: {
             color: "RANDOM",
-            description: `**Usage**: \`${client.config.prefix}skipto <number>\``
+            description: `**ᴜꜱᴀɢᴇ**: \`${client.config.prefix}skipto <number>\``
           }
         })
         .catch(console.error);
 
     const queue = message.client.queue.get(message.guild.id);
     if (!queue)
-      return sendError("There is no queue.", message.channel).catch(
+      return sendError("ᴛʜᴇʀᴇ ɪꜱ ɴᴏ Qᴜᴇᴜᴇ.", message.channel).catch(
         console.error
       );
     if (args[0] > queue.songs.length)
       return sendError(
-        `The queue is only ${queue.songs.length} songs long!`,
+        `ᴛʜᴇ Qᴜᴇᴜᴇ ɪꜱ ᴏɴʟʏ ${queue.songs.length} ꜱᴏɴɢꜱ ʟᴏɴɢ!`,
         message.channel
       ).catch(console.error);
 
@@ -46,7 +46,7 @@ module.exports = {
       queue.voiceChannel.leave();
       message.client.queue.delete(message.guild.id);
       return sendError(
-        `:notes: The player has stopped and the queue has been cleared.: ${error}`,
+        `:notes: ᴛʜᴇ ᴘʟᴀʏᴇʀ ʜᴀꜱ ꜱᴛᴏᴘᴘᴇᴅ ᴀɴᴅ ᴛʜᴇ Qᴜᴇᴜᴇ ʜᴀꜱ ʙᴇᴇɴ ᴄʟᴇᴀʀᴇᴅ.: ${error}`,
         message.channel
       );
     }
@@ -55,7 +55,7 @@ module.exports = {
       .send({
         embed: {
           color: "RANDOM",
-          description: `${message.author} ⏭ skipped \`${args[0] - 1}\` songs`
+          description: `${message.author} ⏭ ꜱᴋɪᴘᴘᴇᴅ \`${args[0] - 1}\` ꜱᴏɴɢꜱ`
         }
       })
       .catch(console.error);

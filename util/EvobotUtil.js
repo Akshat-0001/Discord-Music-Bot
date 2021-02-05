@@ -5,7 +5,7 @@ module.exports = {
 
     if (channelID !== botChannel) {
       member
-        .send("You need to join the voice channel first!")
+        .send("ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴊᴏɪɴ ᴛʜᴇ ᴠᴏɪᴄᴇ ᴄʜᴀɴɴᴇʟ ꜰɪʀꜱᴛ!")
         .catch(console.error);
       return;
     }

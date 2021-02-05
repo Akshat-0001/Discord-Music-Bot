@@ -12,15 +12,13 @@ module.exports = {
   run: async function(client, message, args) {
     const permissions = message.channel.permissionsFor(message.client.user);
     if (!permissions.has(["MANAGE_MESSAGES", "ADD_REACTIONS"]))
-      return sendError(
-        "Missing permission to manage messages or add reactions",
+      return sendError("Missing permission to manage messages or add reactions",
         message.channel
       );
 
     const queue = message.client.queue.get(message.guild.id);
     if (!queue)
-      return sendError(
-        "There's nothing playing in this server. -_-",
+      return sendError("There's nothing playing in this server. -_-",
         message.channel
       );
 

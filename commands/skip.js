@@ -12,14 +12,14 @@ module.exports = {
   run: async function(client, message, args) {
     const channel = message.member.voice.channel;
     if (!channel)
-      return sendError(
-        "I'm sorry but you need to be in a voice channel to play music!",
+      return sendError("https://cdn.discordapp.com/emojis/797082334415421465.gif",
+        "ɪ'ᴍ ꜱᴏʀʀʏ ʙᴜᴛ ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʙᴇ ɪɴ ᴀ ᴠᴏɪᴄᴇ ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴘʟᴀʏ ᴍᴜꜱɪᴄ!",
         message.channel
       );
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue)
-      return sendError(
-        "There is nothing playing that I could skip for you.",
+      return sendError("https://cdn.discordapp.com/emojis/797082334415421465.gif",
+        "ᴛʜᴇʀᴇ ɪꜱ ɴᴏᴛʜɪɴɢ ᴘʟᴀʏɪɴɢ ᴛʜᴀᴛ ɪ ᴄᴏᴜʟᴅ ꜱᴋɪᴘ ꜰᴏʀ ʏᴏᴜ.",
         message.channel
       );
     if (!serverQueue.connection) return;
@@ -28,9 +28,9 @@ module.exports = {
       serverQueue.playing = true;
       serverQueue.connection.dispatcher.resume();
       let xd = new MessageEmbed()
-        .setDescription("▶ Resumed the music for you!")
+        .setDescription("▶ ʀᴇꜱᴜᴍᴇᴅ ᴛʜᴇ ᴍᴜꜱɪᴄ ꜰᴏʀ ʏᴏᴜ!")
         .setColor("RANDOM")
-        .setTitle("Music has been Resumed!");
+        .setTitle("ᴍᴜꜱɪᴄ ʜᴀꜱ ʙᴇᴇɴ ʀᴇꜱᴜᴍᴇᴅ!");
 
       return message.channel.send(xd).catch(err => console.log(err));
     }
@@ -41,7 +41,7 @@ module.exports = {
       serverQueue.voiceChannel.leave();
       message.client.queue.delete(message.guild.id);
       return sendError(
-        `:notes: The player has stopped and the queue has been cleared.: ${error}`,
+        `:notes: ᴛʜᴇ ᴘʟᴀʏᴇʀ ʜᴀꜱ ꜱᴛᴏᴘᴘᴇᴅ ᴀɴᴅ ᴛʜᴇ Qᴜᴇᴜᴇ ʜᴀꜱ ʙᴇᴇɴ ᴄʟᴇᴀʀᴇᴅ.: ${error}`,
         message.channel
       );
     }

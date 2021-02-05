@@ -20,7 +20,7 @@ module.exports = {
     let thing = new MessageEmbed()
       .setAuthor(
         "Now Playing",
-        "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif"
+        "https://cdn.discordapp.com/emojis/767294574212415518.gif"
       )
       .setThumbnail(song.img)
       .setColor("BLUE")

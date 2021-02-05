@@ -13,13 +13,13 @@ module.exports = {
     const channel = message.member.voice.channel;
     if (!channel)
       return sendError(
-        "I'm sorry but you need to be in a voice channel to play music!",
+        "ɪ'ᴍ ꜱᴏʀʀʏ ʙᴜᴛ ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʙᴇ ɪɴ ᴀ ᴠᴏɪᴄᴇ ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴘʟᴀʏ ᴍᴜꜱɪᴄ!",
         message.channel
       );
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue)
       return sendError(
-        "There is nothing playing that I could stop for you.",
+        "ᴛʜᴇʀᴇ ɪꜱ ɴᴏᴛʜɪɴɢ ᴘʟᴀʏɪɴɢ ᴛʜᴀᴛ ɪ ᴄᴏᴜʟᴅ ꜱᴛᴏᴘ ꜰᴏʀ ʏᴏᴜ.",
         message.channel
       );
     if (!serverQueue.connection) return;
@@ -30,7 +30,7 @@ module.exports = {
       message.guild.me.voice.channel.leave();
       message.client.queue.delete(message.guild.id);
       return sendError(
-        `:notes: The player has stopped and the queue has been cleared.: ${error}`,
+        `:notes: ᴛʜᴇ ᴘʟᴀʏᴇʀ ʜᴀꜱ ꜱᴛᴏᴘᴘᴇᴅ ᴀɴᴅ ᴛʜᴇ Qᴜᴇᴜᴇ ʜᴀꜱ ʙᴇᴇɴ ᴄʟᴇᴀʀᴇᴅ.: ${error}`,
         message.channel
       );
     }

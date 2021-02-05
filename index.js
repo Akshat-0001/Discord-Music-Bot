@@ -3,6 +3,7 @@ const fs = require("fs");
 const { Collection, Client } = require("discord.js");
 const fetch = require("node-fetch");
 const AutoPoster = require('topgg-autoposter');
+const keepAlive = require("./server");
 
 const client = new Client(); //Making a discord bot client
 client.commands = new Collection(); //Making client.commands as a Discord.js Collection
@@ -37,5 +38,6 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
+keepAlive();
 //Logging in to discord
 client.login(process.env.TOKEN);

@@ -24,7 +24,7 @@ module.exports = {
       .addField("Developer Info", [
         `**❯  Name:** AKSHAT SHUKLA`,
 
-        `**❯  UserName:** Aкѕнaт|ℓινє fℓαmє|ﾶ#6969`,
+        `**❯  UserName:** Akshat6969#6969`,
 
         `**❯  UserID:** 755001695301402624`,
 

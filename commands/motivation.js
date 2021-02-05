@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const jsonQuotes = require("/app/util/motivational.json");
+const jsonQuotes = require("/home/runner/MOCHA-MUSIC-FINAL-REPO/util/motivational.json");
 
 module.exports = {
   info: {
